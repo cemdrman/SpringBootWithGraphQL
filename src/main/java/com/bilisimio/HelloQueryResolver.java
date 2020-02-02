@@ -10,5 +10,9 @@ public class HelloQueryResolver implements GraphQLQueryResolver{
 	public String hello() {
         return "Hello GraphQL";
     }
+	
+	public String helloWithParameter(String name) {
+        return "Hello ".concat(name);
+    }
 
 }
