@@ -1,0 +1,14 @@
+type Blogger{
+
+     id: ID!
+	 name: String!
+	 surname: String!
+	 email: String!
+	 password: String!
+
+}
+
+extend type Query {
+    getAllBloggers: [Blogger]!
+    getBlogger(id: ID!): Blogger!
+}
