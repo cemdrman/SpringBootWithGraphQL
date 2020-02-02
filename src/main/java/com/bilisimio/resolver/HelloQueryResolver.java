@@ -1,4 +1,4 @@
-package com.bilisimio;
+package com.bilisimio.resolver;
 
 import org.springframework.stereotype.Service;
 

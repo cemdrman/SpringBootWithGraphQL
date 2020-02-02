@@ -1,4 +1,6 @@
+
 type Query {
     hello: String!
     helloWithParameter(name: String!): String!
+    
 }
