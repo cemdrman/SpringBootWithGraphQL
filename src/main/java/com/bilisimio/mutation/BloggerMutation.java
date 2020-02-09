@@ -19,4 +19,15 @@ public class BloggerMutation implements GraphQLMutationResolver {
 		return blogger;
 	}
 
+	public Boolean deleteBlogger(Long id) {
+		service.getBloggerList().remove(id.intValue());
+		return true;
+	}
+
+	public Blogger updateBlogger(Long id, String email) {
+		Blogger blogger = service.getBloggerList().get(id.intValue());
+		blogger.setEmail(email);
+		return blogger;
+	}
+
 }
