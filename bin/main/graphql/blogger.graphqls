@@ -12,3 +12,10 @@ extend type Query {
     getAllBloggers: [Blogger]!
     getBlogger(id: ID!): Blogger!
 }
+
+
+type Mutation {
+
+    saveBlogger(id: ID!, name: String!, surname: String!,  email: String, password: String) : Blogger!
+ 
+}
