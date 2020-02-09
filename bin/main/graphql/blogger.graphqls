@@ -17,5 +17,7 @@ extend type Query {
 type Mutation {
 
     saveBlogger(id: ID!, name: String!, surname: String!,  email: String, password: String) : Blogger!
+    deleteBlogger(id: ID!) : Boolean 
+    updateBlogger(id: ID!, email: String!) : Blogger!
  
 }
