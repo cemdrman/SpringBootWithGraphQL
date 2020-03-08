@@ -3,6 +3,7 @@ package com.bilisimio.mutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bilisimio.exception.BloggerNotFoundException;
 import com.bilisimio.model.Blogger;
 import com.bilisimio.service.BloggerService;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
@@ -20,6 +21,9 @@ public class BloggerMutation implements GraphQLMutationResolver {
 	}
 
 	public Boolean deleteBlogger(Long id) {
+		if (service.getBloggerList().size() < id) {
+			throw new BloggerNotFoundException("Blogger Not Found");
+		}
 		service.getBloggerList().remove(id.intValue());
 		return true;
 	}
