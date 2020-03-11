@@ -3,8 +3,8 @@ package com.bilisimio.mutation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bilisimio.entity.Blogger;
 import com.bilisimio.exception.BloggerNotFoundException;
-import com.bilisimio.model.Blogger;
 import com.bilisimio.service.BloggerService;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 
