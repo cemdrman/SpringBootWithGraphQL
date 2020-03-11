@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.bilisimio.model.Blogger;
+import com.bilisimio.entity.Blogger;
 
 @Service
 public class BloggerService {

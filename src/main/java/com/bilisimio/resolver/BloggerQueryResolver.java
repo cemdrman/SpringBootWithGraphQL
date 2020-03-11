@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bilisimio.model.Blogger;
+import com.bilisimio.entity.Blogger;
 import com.bilisimio.service.BloggerService;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
