@@ -1,0 +1,7 @@
+type Address{
+
+     id: ID!
+	 addressType: AddressType!
+	 addressField: String!
+
+}

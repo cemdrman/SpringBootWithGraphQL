@@ -5,6 +5,9 @@ type Blogger{
 	 surname: String!
 	 email: String!
 	 password: String!
+	 blogList: [Blog]
+	 address: Address
+	 gender: GenderType
 
 }
 
@@ -14,7 +17,7 @@ extend type Query {
 }
 
 
-type Mutation {
+extend type Mutation {
 
     saveBlogger(id: ID!, name: String!, surname: String!,  email: String, password: String) : Blogger!
     deleteBlogger(id: ID!) : Boolean 
