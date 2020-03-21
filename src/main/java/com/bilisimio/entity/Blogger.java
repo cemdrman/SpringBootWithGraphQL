@@ -2,6 +2,8 @@ package com.bilisimio.entity;
 
 import java.util.List;
 
+import com.bilisimio.enums.GenderType;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,7 @@ public class Blogger {
 	private Long id;
 	private String name;
 	private String surname;
+	private GenderType gender;
 	private String email;
 	private String password;
 	private List<Blog> blogList;
