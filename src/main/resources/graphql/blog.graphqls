@@ -1,0 +1,9 @@
+type Blog{
+
+     id: ID!
+	 title: String!
+	 content: String!
+	 imageUrl: String!
+	 categoryList: [Category]
+
+}
