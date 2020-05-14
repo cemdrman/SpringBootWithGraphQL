@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bilisimio.entity.Blog;
 import com.bilisimio.service.BlogService;
+import com.bilisimio.service.RabbitMQService;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
 @Service
@@ -14,9 +15,14 @@ public class BlogQueryResolver implements GraphQLQueryResolver {
 
 	@Autowired
 	private BlogService service;
+	
+	@Autowired
+	private RabbitMQService rabbit;
 
 	public Blog getBlogById(Long id) {
-		return service.getBlogById(id);
+		Blog blog = service.getBlogById(id);
+		rabbit.send(blog);
+		return blog;
 	}
 	
 	public List<Blog> getAllBlogs() {
