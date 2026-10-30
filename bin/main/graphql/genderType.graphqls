@@ -1,6 +1,0 @@
-enum GenderType{
-	
-	MALE
-	FEMALE
-
-}
