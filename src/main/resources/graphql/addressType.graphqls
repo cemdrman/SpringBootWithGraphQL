@@ -1,6 +1,4 @@
-enum AddressType{
-
+enum AddressType {
 	OFFICE
 	HOME
-
 }

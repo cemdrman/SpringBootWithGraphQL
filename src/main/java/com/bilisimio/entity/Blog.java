@@ -1,5 +1,7 @@
 package com.bilisimio.entity;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +17,8 @@ public class Blog {
 	private String title;
 	private String content;
 	private String imageUrl;
-	private List<Category> categoryList;
+	private Long authorId;
+	private List<Long> categoryIds = new ArrayList<>();
+	private Instant publishedAt;
 
 }

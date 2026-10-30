@@ -1,14 +1,58 @@
-type Blog{
+type Blog {
+	id: ID!
+	title: String!
+	content: String!
+	imageUrl: String
+	"ISO-8601 yayın zamanı"
+	publishedAt: String!
+	author: Blogger
+	categoryList: [Category!]!
+}
 
-     id: ID!
-	 title: String!
-	 content: String!
-	 imageUrl: String!
-	 categoryList: [Category]
+type BlogPage {
+	content: [Blog!]!
+	page: Int!
+	size: Int!
+	totalElements: Int!
+	totalPages: Int!
+	hasNext: Boolean!
+}
 
+input CreateBlogInput {
+	title: String!
+	content: String!
+	imageUrl: String
+	authorId: ID!
+	categoryIds: [ID!]
+}
+
+"Yalnızca gönderilen alanlar güncellenir."
+input UpdateBlogInput {
+	title: String
+	content: String
+	imageUrl: String
+	categoryIds: [ID!]
 }
 
 extend type Query {
-    getBlogById(id: ID!): Blog
-    getAllBlogs : [Blog]
+	blog(id: ID!): Blog
+	"Sayfalı blog listesi (page 0'dan başlar, size 1-100)"
+	blogs(page: Int! = 0, size: Int! = 10): BlogPage!
+	"Başlık ve içerikte büyük/küçük harf duyarsız arama"
+	searchBlogs(keyword: String!): [Blog!]!
+	blogsByCategory(categoryId: ID!): [Blog!]!
+
+	getBlogById(id: ID!): Blog @deprecated(reason: "`blog` kullanın.")
+	getAllBlogs: [Blog] @deprecated(reason: "`blogs` kullanın.")
+}
+
+extend type Mutation {
+	createBlog(input: CreateBlogInput!): Blog!
+	updateBlog(id: ID!, input: UpdateBlogInput!): Blog!
+	deleteBlog(id: ID!): Boolean!
+}
+
+extend type Subscription {
+	"Yeni bir blog yayınlandığında tetiklenir (WebSocket: /graphql-ws)"
+	blogPublished: Blog!
 }

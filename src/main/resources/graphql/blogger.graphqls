@@ -1,26 +1,37 @@
-type Blogger{
+"Blog yazarı. Parola alanı güvenlik nedeniyle şemada yer almaz."
+type Blogger {
+	id: ID!
+	name: String!
+	surname: String!
+	email: String!
+	gender: GenderType
+	address: Address
+	"Yazarın yazdığı bloglar (DataLoader ile toplu yüklenir)"
+	blogList: [Blog!]!
+}
 
-     id: ID!
-	 name: String!
-	 surname: String!
-	 email: String!
-	 password: String!
-	 blogList: [Blog]
-	 address: Address
-	 gender: GenderType
-
+input CreateBloggerInput {
+	name: String!
+	surname: String!
+	email: String!
+	password: String!
+	gender: GenderType
+	address: AddressInput
 }
 
 extend type Query {
-    getAllBloggers: [Blogger]!
-    getBlogger(id: ID!): Blogger!
+	bloggers: [Blogger!]!
+	blogger(id: ID!): Blogger
+
+	getAllBloggers: [Blogger!]! @deprecated(reason: "`bloggers` kullanın.")
+	getBlogger(id: ID!): Blogger! @deprecated(reason: "`blogger` kullanın.")
 }
 
-
 extend type Mutation {
+	createBlogger(input: CreateBloggerInput!): Blogger!
+	"Yalnızca gönderilen alanlar güncellenir."
+	updateBlogger(id: ID!, email: String, name: String, surname: String, gender: GenderType, address: AddressInput): Blogger!
+	deleteBlogger(id: ID!): Boolean!
 
-    saveBlogger(id: ID!, name: String!, surname: String!,  email: String, password: String) : Blogger!
-    deleteBlogger(id: ID!) : Boolean 
-    updateBlogger(id: ID!, email: String!) : Blogger!
- 
+	saveBlogger(id: ID!, name: String!, surname: String!, email: String, password: String): Blogger! @deprecated(reason: "`createBlogger` kullanın.")
 }

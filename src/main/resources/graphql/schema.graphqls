@@ -1,7 +1,6 @@
-type Query {
-   
-}
+# Kök tipler. Her alan kendi .graphqls dosyasında `extend type` ile genişletilir.
+type Query
 
-type Mutation {
- 
-}
+type Mutation
+
+type Subscription
