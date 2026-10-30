@@ -1,6 +1,15 @@
-type Category{
+type Category {
+	id: ID!
+	name: String!
+	"Bu kategoriye ait bloglar"
+	blogs: [Blog!]!
+}
 
-     id: ID!
-	 name: String!
+extend type Query {
+	categories: [Category!]!
+	category(id: ID!): Category
+}
 
+extend type Mutation {
+	createCategory(name: String!): Category!
 }

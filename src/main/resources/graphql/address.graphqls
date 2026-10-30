@@ -1,7 +1,10 @@
-type Address{
+type Address {
+	id: ID!
+	addressType: AddressType!
+	addressField: String!
+}
 
-     id: ID!
-	 addressType: AddressType!
-	 addressField: String!
-
+input AddressInput {
+	addressType: AddressType!
+	addressField: String!
 }
